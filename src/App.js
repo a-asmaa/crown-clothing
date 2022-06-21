@@ -1,39 +1,27 @@
-import CategoriesMenu from "./components/categories/categories.component";
+import {Routes, Route} from 'react-router-dom'
+import Home from './Routes/Home.component';
+import Navigation from './Routes/Navigation/Navigation.component';
+import SignIn from './Routes/Sign-in/SignIn.component';
 
+const App = () => {
 
-const  App = () => {
-
-
-  const categories =[
-    {
-      "id": 1,
-      "title": "hats",
-      "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
-    },
-    {
-      "id": 2,
-      "title": "jackets",
-      "imageUrl": "https://i.ibb.co/px2tCc3/jackets.png"
-    },
-    {
-      "id": 3,
-      "title": "sneakers",
-      "imageUrl": "https://i.ibb.co/0jqHpnp/sneakers.png"
-    },
-    {
-      "id": 4,
-      "title": "womens",
-      "imageUrl": "https://i.ibb.co/GCCdy8t/womens.png"
-    },
-    {
-      "id": 5,
-      "title": "mens",
-      "imageUrl": "https://i.ibb.co/R70vBrQ/men.png"
-    }
-  ]
+  const Shop = () => {
+    return (
+      <div>Shop </div>
+    )
+  }
+  
 
   return (
-   <CategoriesMenu categories={categories}/>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+          {/* Nested route  */} 
+          <Route index element={<Home />}/>  {/* index == exact route */}
+          <Route path="shop" element={<Shop/>}/>
+          <Route path="sign-in" element={<SignIn/>}/>
+     
+      </Route>
+    </Routes>
   );
 }
 
