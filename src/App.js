@@ -1,7 +1,8 @@
 import {Routes, Route} from 'react-router-dom'
+import SignUpForm from './components/signup/signup.component';
 import Home from './Routes/Home.component';
 import Navigation from './Routes/Navigation/Navigation.component';
-import SignIn from './Routes/Sign-in/SignIn.component';
+import Authentication from './Routes/Sign-in/Authentication.component';
 
 const App = () => {
 
@@ -18,7 +19,7 @@ const App = () => {
           {/* Nested route  */} 
           <Route index element={<Home />}/>  {/* index == exact route */}
           <Route path="shop" element={<Shop/>}/>
-          <Route path="sign-in" element={<SignIn/>}/>
+          <Route path="auth" element={<Authentication/>}/>
      
       </Route>
     </Routes>
