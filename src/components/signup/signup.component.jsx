@@ -1,6 +1,8 @@
 import { async } from '@firebase/util';
 import React from 'react'
+import { useContext } from 'react';
 import { useState } from 'react';
+import { UserContext } from '../../contexts/user.context';
 import { createAuthWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.uttils';
 import Button from '../Button/button.component';
 import InputForm from '../input-form/form-input';
@@ -17,12 +19,12 @@ const defaultFormFields = {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
   
+    // const {setCurrentUser} = useContext(UserContext)
 
     const handleChange = (event) => {
         const {name, value} = event.target;
 
         setFormFields({...formFields, [name]: value})
-
     }
 
     const handleSubmit = async(e) => {
@@ -36,6 +38,9 @@ const defaultFormFields = {
         try {
             const {user} = await createAuthWithEmailAndPassword( email, password)
             console.log(user);
+
+            // setCurrentUser(user)
+
             // update display name 
             await createUserDocumentFromAuth(user, {displayName})
 

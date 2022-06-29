@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, getAuth, signInWithRedirect, signInWithGoo, signInWithPopup, EmailAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithRedirect, signInWithPopup,
+createUserWithEmailAndPassword, signInWithEmailAndPassword,
+signOut, onAuthStateChanged  } from "firebase/auth";
 import { getDoc, getFirestore, setDoc, doc} from 'firebase/firestore'
 
 // Your web app's Firebase configuration
@@ -29,11 +31,10 @@ export const db = getFirestore();
 export const createUserDocumentFromAuth = async (user, options ) => {
 
     if(!user) return;
-
     const userDocRef = doc(db, 'users', user.uid)
     const userSnapshot = await getDoc(userDocRef)
 
-    if(! userSnapshot.exists()){
+    if(!userSnapshot.exists()){
         // add user  
         const {displayName, email } = user
         const createdAt = new Date()
@@ -49,7 +50,6 @@ export const createUserDocumentFromAuth = async (user, options ) => {
     }
 
     return userDocRef;
-
 }
 
 export const createAuthWithEmailAndPassword = async (email, password) => {
@@ -65,3 +65,13 @@ export const signInAuthWithEmailAndPassword = async (email, password) => {
     return await signInWithEmailAndPassword(auth, email, password)
 
 }
+
+
+export const signOutUser = async () =>  await signOut(auth)
+
+
+// call back function to call every time onAuth changes 
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
+
+
+// observer pattern start listen (next, error, complete)
