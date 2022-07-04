@@ -7,14 +7,21 @@ import Authentication from './Routes/Sign-in/Authentication.component';
 import { setCurrentUser } from './store/Actions/userAction';
 import {useDispatch} from 'react-redux'
 import { useEffect } from 'react';
-import { createUserDocumentFromAuth, onAuthStateChangedListener } from './utils/firebase/firebase.uttils';
+import { createCollectionAndDocument, createUserDocumentFromAuth, getCategoriesAndDocuments, onAuthStateChangedListener } from './utils/firebase/firebase.uttils';
+import SHOP_DATA from './utils/shop-data';
+import CategoryPreview from './Routes/CategoryPreview/category-preview.component';
+import { setCategories } from './store/Actions/categoriesAction';
 
 
 const App = () => {
 
   const dispatch = useDispatch(); 
 
+
+  
   useEffect(()=>{
+
+    // createCollectionAndDocument('categories', SHOP_DATA)
 
     const unsubscribe = onAuthStateChangedListener(user=> {
 
@@ -23,6 +30,17 @@ const App = () => {
         dispatch(setCurrentUser(user))
       })
 
+
+      // get categories 
+
+      const getCategories = async() => {
+        const categoryMap = await getCategoriesAndDocuments();
+        
+        dispatch(setCategories(categoryMap))
+      }
+
+      getCategories()
+      
     return unsubscribe  // when unmount - cleanup this method
 
 }, [])
@@ -35,7 +53,7 @@ const App = () => {
       <Route path="/" element={<Navigation />}>
           {/* Nested route  */} 
           <Route index element={<Home />}/>  {/* index == exact route */}
-          <Route path="shop" element={<Shop />}/>
+          <Route path="shop/*" element={<Shop />}/>
           <Route path="auth" element={<Authentication/>}/>
           <Route path="checkout" element={<Checkout/>}/>
      

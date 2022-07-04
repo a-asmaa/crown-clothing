@@ -1,4 +1,4 @@
-import { ADD_ITEM_TO_CART, OPEN_CART, CLEAR_ITEM_FROM_CART, DELETE_ITEM_FROM_CART } from "../Actions/cartActions";
+import { SET_CART_ITEMS, SET_IS_CART_OPEN } from "../Actions/cartActions";
 
 const INITIAL_STATE = {
     cartTotal: 0,
@@ -13,34 +13,33 @@ export const cartReducer = (state=INITIAL_STATE, action) => {
 
     switch(type) {
 
-        case ADD_ITEM_TO_CART: 
+        case  SET_CART_ITEMS: 
 
-        let existingItem = state.cartItems.find(item => item.id === payload.id)
+        // let existingItem = state.cartItems.find(item => item.id === payload.id)
 
-        if(existingItem) 
-            return {...state, cartItems: state.cartItems.map(item => item.id === payload.id ? {...item, quantity: item.quantity +1} : item),
-                cartCount: state.cartCount + 1,
-                cartTotal: state.cartTotal + payload.price * payload.quanti
-            }
+        // if(existingItem) 
+        //     return {...state, cartItems: state.cartItems.map(item => item.id === payload.id ? {...item, quantity: item.quantity +1} : item),
+        //         cartCount: state.cartCount + 1,
+        //         cartTotal: state.cartTotal + payload.price * payload.quanti
+        //     }
             
         return {
-            ...state, cartItems: [...state.cartItems, {...payload, quantity: 1}],
-            cartCount: state.cartCount + 1,
+            ...state, 
+            ...payload
         }
 
-        case CLEAR_ITEM_FROM_CART:
-            return {...state, 
-                cartItems: state.cartItems.filter(item => item.id !== payload.id)
-            }
+        case SET_IS_CART_OPEN:
+            return { ...state, isCartOpen: payload}
 
-        case DELETE_ITEM_FROM_CART:
-            if(payload.quantity === 1)
-            return {...state, cartItems: state.cartItems.filter(item => item.id !== payload.id)}
+        //     return {...state, 
+        //         cartItems: state.cartItems.filter(item => item.id !== payload.id)
+        //     }
 
-            return {...state, cartItems: state.cartItems.map(item => item.id === payload.id ? {...item, quantity: item.quantity -1} : item)}
+        // case DELETE_ITEM_FROM_CART:
+        //     if(payload.quantity === 1)
+        //     return {...state, cartItems: state.cartItems.filter(item => item.id !== payload.id)}
 
-        case OPEN_CART:
-            return { ...state, isCartOpen: !state.isCartOpen }
+        //     return {...state, cartItems: state.cartItems.map(item => item.id === payload.id ? {...item, quantity: item.quantity -1} : item)}
 
         default: 
             return state;

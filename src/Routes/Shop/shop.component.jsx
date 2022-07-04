@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { useContext } from 'react';
 import ProductCard from '../../components/product/product.component';
 import { ProductContext } from '../../contexts/products.context'
-import SHOP_DATA from "../../utils/shop-data.json"
+import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.uttils';
 import './shop.style.scss'
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import CategoryPreview from '../CategoryPreview/category-preview.component';
+import CategoryList from '../../components/categoriesPreview/categories-preview.component';
+
 
 function Shop() {
 
-  const {products} = useContext(ProductContext)
 
   return (
-    <div className='products-container'>
-        {products.map(product =>  <ProductCard key={product.id} product={product} />
-        )}
-    </div>
+    <Routes>
+        <Route index element={<CategoryList />}/>
+        <Route path=":category" element={<CategoryPreview />}/>
+    </Routes>
+   
   )
 }
 
