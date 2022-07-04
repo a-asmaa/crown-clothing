@@ -1,7 +1,7 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../store/Actions/cartActions';
-import { Arrow, CheckoutItemContainer, ImageContainer, Quantity, RemoveButton, SpanText, Value } from './checkout-item.styles';
+import { Arrow, CheckoutItemContainer, ImageContainer, Quantity, RemoveButton, BaseSpan, Value } from './checkout-item.styles';
 
 
 function CheckoutItem({Item}) {
@@ -23,13 +23,13 @@ function CheckoutItem({Item}) {
             <img src={imageUrl} alt={name} />
         </ImageContainer>
 
-        <SpanText> {name} </SpanText>
+        <BaseSpan> {name} </BaseSpan>
         <Quantity> 
             <Arrow onClick={handleDelete}> &#10094;</Arrow>  
             <Value>{quantity} </Value>  
             <Arrow onClick={handleAdd}> &#10095;</Arrow>
          </Quantity>
-        <SpanText>{price}</SpanText>
+        <BaseSpan>{price}</BaseSpan>
         <RemoveButton onClick={handleClear}>&#10005;</RemoveButton>
 
     </CheckoutItemContainer>
