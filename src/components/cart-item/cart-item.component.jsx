@@ -1,5 +1,6 @@
 import React from 'react'
-import './cart-item.styles.scss'
+import './cart-item.styles.jsx'
+import { CartItemContainer, ItemDetails, Name } from './cart-item.styles.jsx';
 
 
 
@@ -8,15 +9,15 @@ function CartItem({cartItem}) {
     const {name, quantity, imageUrl, price} = cartItem;
 
   return (
-    <div className='cart-item-container'>
+    <CartItemContainer>
         <img src={imageUrl} alt={name}/>
 
-        <div className='item-details'>
-            <span className='name'> {name}</span>
-            <span className='name'> {quantity} x ${price}</span>
-        </div>
+        <ItemDetails>
+            <Name> {name}</Name>
+            <Name> {quantity} x ${price}</Name>
+        </ItemDetails>
         
-    </div>
+    </CartItemContainer>
   )
 }
 

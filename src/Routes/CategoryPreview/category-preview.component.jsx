@@ -4,7 +4,8 @@ import ProductCard from '../../components/product/product.component'
 import {useSelector} from 'react-redux'
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import './category-preview.styles.jsx'
+import { CategoryContainer, CategoryTitle } from './category-preview.styles.jsx';
 
 function CategoryPreview() {
 
@@ -22,15 +23,13 @@ function CategoryPreview() {
 
 
   return (
-    <div className='category-container'>
-        {/* <h2 className='title'> {category} </h2> */}
-
-        <div className='products-container'>
-              { products && products.map(product =>  <ProductCard key={product.id} product={product} />
-              )}
-            </div>
-        
-    </div>
+    <>
+        <CategoryTitle> {category.toUpperCase()} </CategoryTitle>
+        <CategoryContainer>
+                { products && products.map(product =>  <ProductCard key={product.id} product={product} />
+                )}
+        </CategoryContainer>
+    </>
   )
 }
 

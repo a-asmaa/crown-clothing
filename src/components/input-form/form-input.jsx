@@ -1,5 +1,5 @@
 import React from 'react'
-import './form-input.styles.scss'
+import './form-input.styles.jsx'
 function InputForm({ label, ...otherProps}) {
 
 

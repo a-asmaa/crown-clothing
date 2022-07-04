@@ -5,14 +5,12 @@ import { useContext } from 'react';
 import ProductCard from '../../components/product/product.component';
 import { ProductContext } from '../../contexts/products.context'
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.uttils';
-import './shop.style.scss'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import CategoryPreview from '../CategoryPreview/category-preview.component';
 import CategoryList from '../../components/categoriesPreview/categories-preview.component';
 
 
 function Shop() {
-
 
   return (
     <Routes>

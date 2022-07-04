@@ -1,12 +1,10 @@
-import { async } from '@firebase/util';
 import React from 'react'
-import { useContext } from 'react';
 import { useState } from 'react';
-import { UserContext } from '../../contexts/user.context';
 import { createAuthWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.uttils';
-import Button from '../Button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../Button/button.component';
 import InputForm from '../input-form/form-input';
-import './signup.style.scss'
+import './signup.style.jsx'
+import { HeaderText, SignUpContainer } from './signup.style.jsx';
 
 const defaultFormFields = {
     displayName: '',
@@ -53,8 +51,8 @@ const defaultFormFields = {
     }
 
   return (
-   <div className='sign-up-container'>
-      <h2>Don't have an account?</h2>
+   <SignUpContainer>
+      <HeaderText>Don't have an account?</HeaderText>
       <span>Sign up with your email and password</span>
         <form onSubmit={handleSubmit}>
 
@@ -92,9 +90,9 @@ const defaultFormFields = {
             name='confirmPassword'
             value={confirmPassword}
             />
-            <Button buttonType="inverted" type='submit'>Sign Up</Button>
+            <Button buttonType={BUTTON_TYPE_CLASSES.inverted} type='submit'>Sign Up</Button>
         </form>
-    </div>
+    </SignUpContainer>
   )
 }
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import './cart-icon.style.scss'
-import { ReactComponent as ShoppingIcon} from '../../assets/shopping-bag.svg'
+import './cart-icon.style.jsx'
 import {useSelector, useDispatch} from 'react-redux'
 import { setIsCartOpen } from '../../store/Actions/cartActions'
+import { CartIconContainer, ItemCount, ShoppingIcon } from './cart-icon.style.jsx'
 
 
 function CartIcon() {
@@ -14,14 +14,13 @@ function CartIcon() {
         // setIsCartOpen(!isCartOpen)
         dispatch(setIsCartOpen(!isCartOpen))
         
-
     }
 
   return (
-    <div className='cart-icon-container' onClick={handleCartClick}>
+    <CartIconContainer onClick={handleCartClick}>
         <ShoppingIcon className="shopping-icon" />
-        <span className='item-count'> {cartCount} </span>
-    </div>
+        <ItemCount> {cartCount} </ItemCount>
+    </CartIconContainer>
   )
 }
 

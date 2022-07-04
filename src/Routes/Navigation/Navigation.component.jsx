@@ -1,11 +1,11 @@
 import React from 'react'
-import {Outlet, Link} from 'react-router-dom'
-import './navigation.styles.scss'
+import {Outlet, Link, NavLink} from 'react-router-dom'
 import { ReactComponent as CrownLogo} from '../../assets/crown.svg'
 import { signOutUser } from '../../utils/firebase/firebase.uttils'
 import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropDown from '../../components/cart-deopdown/cart-dropdown.component'
 import {useSelector} from 'react-redux'
+import { LogoContainer, NavigationContainer, NavLinkContainer, NavLinks } from './navigation.styles'
 
 function Navigation() {
 
@@ -22,29 +22,27 @@ function Navigation() {
 
   return (
     <>
-    <div className='navigation'>
+    <NavigationContainer>
 
-    <Link to={"/"}> 
-      <div className='logo-container'> 
+    <LogoContainer to={"/"}> 
         <CrownLogo className='logo'/>
-      </div>
-    </Link>
-    <div className='nav-links-container'>
+    </LogoContainer>
+    <NavLinkContainer >
 
-      <Link className='nav-link' to={'shop'}> SHOP </Link>
+       <NavLinks to={'shop'}> SHOP </NavLinks>
 
-      { currentUser ? 
-        <span className='nav-link' onClick={signOutUser}> SIGN OUT </span>
+      { currentUser ?
+        <NavLinks as='span'  onClick={signOutUser}> SIGN OUT </NavLinks>
         : 
-        <Link className='nav-link' to={'auth'}> SIGN IN </Link>
-      }
+        <NavLinks to={'auth'}> SIGN IN </NavLinks>
+      } 
 
       <CartIcon />
-    </div>
+    </NavLinkContainer>
      
       { isCartOpen && <CartDropDown />   }
       
-    </div>
+    </NavigationContainer>
       <Outlet /> 
    </>
   )

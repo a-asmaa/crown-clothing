@@ -2,7 +2,7 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addItemToCart } from '../../store/Actions/cartActions';
 import Button from '../Button/button.component';
-import './product.style.scss'
+import { Footer, Name, Price, ProductCardContainer } from './product.style.jsx';
 
 
 
@@ -18,17 +18,15 @@ function ProductCard({product}) {
     const handleAddToCart = () => dispatch(addItemToCart(cartItems, product))
 
   return (
-    <div className='product-card-container'>
-
-
+    <ProductCardContainer>
         <img src={imageUrl} alt={name} />
 
-        <div className='footer'>
-            <span className='name'>{name}</span>
-            <span className='price'>{price}</span>
-        </div>
+        <Footer>
+            <Name>{name}</Name>
+            <Price>{price}</Price>
+        </Footer>
         <Button buttonType='inverted' onClick={handleAddToCart}> ADD TO CART </Button>
-    </div>
+    </ProductCardContainer>
   )
 }
 
