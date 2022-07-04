@@ -16,10 +16,12 @@ export const SpanText = styled.span`
   margin: 0 6px 0;
   font-size: 22px;
   color: #4a4a4a;
+  width: 23%;
 `
 
 export const Quantity = styled.span`
 display: flex;
+width: 23%;
 `
 
 export const ImageContainer = styled.div`
@@ -32,28 +34,15 @@ export const ImageContainer = styled.div`
   }
 `
 
+export const Arrow = styled.div`
+  cursor: pointer
+`
+
+export const Value = styled.div`
+  margin: 0 10px;
+`
+
 export const RemoveButton = styled.div`
   padding-left: 12px;
   cursor: pointer;
 `
-
-
-
-  
-  // .name,
-  // .quantity,
-  // .price {
-  //   width: 23%;
-  // }
-
-  // .quantity {
-   
-
-  //   .arrow {
-  //     cursor: pointer;
-  //   }
-
-  //   .value {
-  //     margin: 0 10px;
-  //   }
-  // }
