@@ -18,7 +18,7 @@ const composedEnhancers = composeEnhanced(applyMiddleware(...middleWares))
 const persistConfig = {
     key: 'root',  // start from root level 
     storage,
-   whitelist: ['cart'] 
+    whitelist: ['cart'] 
     // blacklist: ['user'] 
 }
     
