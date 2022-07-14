@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithRedirect, signInWithPopup,
 createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged  } from "firebase/auth";
-import { getDoc, getFirestore, setDoc, doc, addDoc, collection, writeBatch, getDocs} from 'firebase/firestore'
+import { getDoc, getFirestore, setDoc, doc, collection, writeBatch, getDocs} from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -47,13 +47,15 @@ export const getCategoriesAndDocuments = async () => {
     const collectionRef = collection(db, 'categories');
     const querySnapshot = await getDocs(collectionRef);
 
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-        const {title, items} = docSnapshot.data();
-        acc[title.toLowerCase()] = items;
+    return querySnapshot.docs.map(snapShot => snapShot.data())
+
+    // const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    //     const {title, items} = docSnapshot.data();
+    //     acc[title.toLowerCase()] = items;
         
-        return acc;
-    }, {})
-    return categoryMap
+    //     return acc;
+    // }, {})
+    // return categoryMap
 }
 
 

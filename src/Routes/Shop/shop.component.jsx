@@ -1,17 +1,20 @@
-import React, { Fragment } from 'react'
-import { useState } from 'react';
+import React from 'react'
 import { useEffect } from 'react';
-import { useContext } from 'react';
-import ProductCard from '../../components/product/product.component';
-import { ProductContext } from '../../contexts/products.context'
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.uttils';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import { Route, Routes } from 'react-router-dom';
 import CategoryPreview from '../CategoryPreview/category-preview.component';
 import CategoryList from '../../components/categoriesPreview/categories-preview.component';
+import { fetchCategoriesAsync} from '../../store/Actions/categoriesAction';
 
 
 function Shop() {
 
+  const dispatch = useDispatch(); 
+
+  useEffect(()=> { // get categories 
+      dispatch(fetchCategoriesAsync())
+  }, [])
+  
   return (
     <Routes>
         <Route index element={<CategoryList />}/>

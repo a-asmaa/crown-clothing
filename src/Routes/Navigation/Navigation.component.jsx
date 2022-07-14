@@ -6,19 +6,13 @@ import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropDown from '../../components/cart-deopdown/cart-dropdown.component'
 import {useSelector} from 'react-redux'
 import { LogoContainer, NavigationContainer, NavLinkContainer, NavLinks } from './navigation.styles'
+import { selectCartOpen } from '../../store/cartSelector'
 
 function Navigation() {
 
-  // const {currentUser} = useContext(UserContext);
-  // const {isCartOpen} = useContext(CartContext);
-
   const {currentUser} = useSelector(state => state.user);
-  const {isCartOpen} = useSelector(state => state.cart);
+  const isCartOpen = useSelector(selectCartOpen);
 
-  // const handleSignOut = async() => {
-  //   await signOutUser();
-  //   // setCurrentUser(null);
-  // }
 
   return (
     <>

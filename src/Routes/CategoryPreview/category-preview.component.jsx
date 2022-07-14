@@ -6,17 +6,20 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './category-preview.styles.jsx'
 import { CategoryContainer, CategoryTitle } from './category-preview.styles.jsx';
+import { categoriesIsLoading, selectCategoryMap } from '../../store/categorySelector';
+import Spinner from '../../components/spinner/spinner.component'
+
+
 
 function CategoryPreview() {
 
    const {category} = useParams();
-   const categories = useSelector(state => state.categories)
-
+   const categories = useSelector(selectCategoryMap)
+   const isLoading = useSelector(categoriesIsLoading) 
    const [products, setProducts] = useState([])
 
 
    useEffect(()=> {
-
     setProducts(categories[category])
 
    }, [categories, category])
@@ -25,10 +28,14 @@ function CategoryPreview() {
   return (
     <>
         <CategoryTitle> {category.toUpperCase()} </CategoryTitle>
-        <CategoryContainer>
-                { products && products.map(product =>  <ProductCard key={product.id} product={product} />
-                )}
-        </CategoryContainer>
+        { 
+          isLoading ?
+            <Spinner /> 
+            : 
+            <CategoryContainer>
+              { products && products.map(product =>  <ProductCard key={product.id} product={product} /> )}
+            </CategoryContainer>
+        }
     </>
   )
 }

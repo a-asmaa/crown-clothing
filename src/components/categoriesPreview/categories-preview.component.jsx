@@ -1,17 +1,21 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.uttils';
+import React from 'react'
 import ProductCard from '../product/product.component';
-import {useDispatch, useSelector} from 'react-redux'
-import { setCategories } from '../../store/Actions/categoriesAction';
+import {useSelector} from 'react-redux'
 import './category-preview.styles.jsx'
-import { Link } from 'react-router-dom';
 import { CategoryPreviewContainer, Preview, TitleLink } from './category-preview.styles.jsx';
+import { categoriesIsLoading, selectCategoryMap } from '../../store/categorySelector';
+import Spinner from '../spinner/spinner.component';
 
 function CategoryList() {
 
-    const categories = useSelector(state => state.categories) 
+    const categories = useSelector(selectCategoryMap) 
+    const isLoading = useSelector(categoriesIsLoading) 
 
-  return (
+
+    
+    if(isLoading) return <Spinner />
+    
+    return (
     <>
         { categories &&
             Object.keys(categories).map( title => 

@@ -1,18 +1,27 @@
-import { SET_CATEGORIES } from "../Actions/categoriesAction";
-
-const INITIAL_STATE = {}
+import { FETCH_CATEGORIES, FETCH_CATEGORIES_FAILED, FETCH_CATEGORIES_SUCCESS } from "../Actions/categoriesAction";
 
 
-export const categoriesReducer = (state= INITIAL_STATE , action) => {
+const INITIAL_STATE = {
+    categories: [],
+    isLoading: false,
+    error: null
+}
 
+
+export const categoriesReducer = (state= INITIAL_STATE , action= {}) => {
 
     const {type, payload} = action;
 
     switch(type){
 
-        case SET_CATEGORIES:
-            return  payload
+        case FETCH_CATEGORIES:
+            return  {...state, isLoading: true}
 
+        case FETCH_CATEGORIES_SUCCESS:
+            return  {...state, categories: payload, isLoading: false}
+
+        case FETCH_CATEGORIES_FAILED:
+            return  {...state, error: payload, isLoading: false}
         default: 
             return state;
     }

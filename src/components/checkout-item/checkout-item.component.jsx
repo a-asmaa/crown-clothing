@@ -1,6 +1,7 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../store/Actions/cartActions';
+import { selectCartItems } from '../../store/cartSelector';
 import { Arrow, CheckoutItemContainer, ImageContainer, Quantity, RemoveButton, BaseSpan, Value } from './checkout-item.styles';
 
 
@@ -9,7 +10,7 @@ function CheckoutItem({Item}) {
     const {name, price, imageUrl, quantity} = Item;
     // const {addItemToCart, deleteItemFromCart, clearItemFromCart} = useContext(CartContext)
     const dispatch = useDispatch()
-    const {cartItems} = useSelector(state => state.cart)
+    const cartItems = useSelector(selectCartItems)
 
 
     const handleAdd = () => dispatch(addItemToCart(cartItems, Item))

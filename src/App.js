@@ -31,15 +31,7 @@ const App = () => {
       })
 
 
-      // get categories 
-
-      const getCategories = async() => {
-        const categoryMap = await getCategoriesAndDocuments();
-        
-        dispatch(setCategories(categoryMap))
-      }
-
-      getCategories()
+      
       
     return unsubscribe  // when unmount - cleanup this method
 
