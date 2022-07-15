@@ -10,20 +10,6 @@ import { AuthenticationContainer } from './authentication.style.jsx'
 
 function Authentication() {
 
-    // useEffect(()=> {
-    //     async function Auth (){
-    //         const res = await getRedirectResult(auth);
-    //         console.log(res);
-    //         if(res){
-    //             const userRef = await createUserDocumentFromAuth(res.user)
-    //             console.log(userRef);
-    //         }
-    //     }
-
-    //     Auth()
-    // }, [])
-
-
   return (
     <AuthenticationContainer>
         <SignInForm/>

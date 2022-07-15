@@ -8,6 +8,13 @@ export const CategoryContainer = styled.div`
     column-gap: 20px;
     row-gap: 50px;
     margin: 30px 0;
+
+    @media screen and (max-width: 800px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+
+
 `
 
 export const CategoryTitle = styled.h2`

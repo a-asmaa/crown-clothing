@@ -22,6 +22,27 @@ export const ProductCardContainer = styled.div`
     position: absolute;
     top: 255px;
     display: none;
+
+
+    @media screen and (max-width: 800px){
+      display: block;
+      padding: 0 10px;
+      min-width: unset
+
+      &:hover {
+        img {
+          opacity: unset;
+        }
+    
+        button {
+          opacity: unset;
+        }
+      }
+
+
+    }
+
+
   }
 
   &:hover {
