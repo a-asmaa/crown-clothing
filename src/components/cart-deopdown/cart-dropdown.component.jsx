@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button, { BUTTON_TYPE_CLASSES } from '../Button/button.component'
 import CartItem from '../cart-item/cart-item.component'
 import {useSelector} from 'react-redux'
@@ -13,9 +13,9 @@ function CartDropDown() {
   const cartItems = useSelector(selectCartItems)
 
   const navigator = useNavigate();
-  const handleToCheckOut = () => {
-    navigator('/checkout')
-  }
+
+  // useCallback to more optimization => will not be re-initialized 
+  const handleToCheckOut = useCallback( ()=> navigator('/checkout'), []) 
 
   return (
     <CartDropdownContainer>

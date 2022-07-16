@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './cart-item.styles.jsx'
 import { CartItemContainer, ItemDetails, Name } from './cart-item.styles.jsx';
 
 
 
-function CartItem({cartItem}) {
+const CartItem = memo(({cartItem}) => {
 
     const {name, quantity, imageUrl, price} = cartItem;
 
@@ -19,6 +19,6 @@ function CartItem({cartItem}) {
         
     </CartItemContainer>
   )
-}
+})
 
 export default CartItem

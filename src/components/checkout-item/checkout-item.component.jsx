@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { memo } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../store/Actions/cartActions';
 import { selectCartItems } from '../../store/cartSelector';
 import { Arrow, CheckoutItemContainer, ImageContainer, Quantity, RemoveButton, BaseSpan, Value } from './checkout-item.styles';
 
 
-function CheckoutItem({Item}) {
+const CheckoutItem = memo(({Item}) => {
 
     const {name, price, imageUrl, quantity} = Item;
     // const {addItemToCart, deleteItemFromCart, clearItemFromCart} = useContext(CartContext)
@@ -35,6 +35,6 @@ function CheckoutItem({Item}) {
 
     </CheckoutItemContainer>
   )
-}
+})
 
 export default CheckoutItem
