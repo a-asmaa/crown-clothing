@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './category-preview.styles.jsx'
 import { CategoryContainer, CategoryTitle } from './category-preview.styles.jsx';
-import { categoriesIsLoading, selectCategoryMap } from '../../store/categorySelector';
+import { categoriesIsLoading, selectCategoryMap } from '../../store/selector/categorySelector';
 import Spinner from '../../components/spinner/spinner.component'
 
 

@@ -3,7 +3,7 @@ import Button, { BUTTON_TYPE_CLASSES } from '../Button/button.component'
 import { FormContainer, PaymentButton, PaymentFormContainer } from './payment.styles'
 import { PaymentElement, useStripe, useElements, CardElement} from "@stripe/react-stripe-js";
 import { useState } from 'react';
-import { selectCartTotal } from '../../store/cartSelector';
+import { selectCartTotal } from '../../store/selector/cartSelector';
 import {useSelector} from 'react-redux'
 
 

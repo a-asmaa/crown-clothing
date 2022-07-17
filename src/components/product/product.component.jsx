@@ -1,7 +1,7 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addItemToCart } from '../../store/Actions/cartActions';
-import { selectCartItems } from '../../store/cartSelector';
+import { selectCartItems } from '../../store/selector/cartSelector';
 import Button from '../Button/button.component';
 import { Footer, Name, Price, ProductCardContainer } from './product.style.jsx';
 

@@ -6,7 +6,7 @@ import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropDown from '../../components/cart-deopdown/cart-dropdown.component'
 import {useSelector} from 'react-redux'
 import { LogoContainer, NavigationContainer, NavLinkContainer, NavLinks } from './navigation.styles'
-import { selectCartOpen } from '../../store/cartSelector'
+import { selectCartOpen } from '../../store/selector/cartSelector'
 
 function Navigation() {
 

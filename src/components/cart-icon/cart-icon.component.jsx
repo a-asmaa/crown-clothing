@@ -3,7 +3,7 @@ import './cart-icon.style.jsx'
 import {useSelector, useDispatch} from 'react-redux'
 import { setIsCartOpen } from '../../store/Actions/cartActions'
 import { CartIconContainer, ItemCount, ShoppingIcon } from './cart-icon.style.jsx'
-import { selectCartCount, selectCartOpen } from '../../store/cartSelector.js'
+import { selectCartCount, selectCartOpen } from '../../store/selector/cartSelector'
 
 
 function CartIcon() {

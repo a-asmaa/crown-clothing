@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addItemToCart, clearItemFromCart, removeItemFromCart } from '../../store/Actions/cartActions';
-import { selectCartItems } from '../../store/cartSelector';
+import { selectCartItems } from '../../store/selector/cartSelector';
 import { Arrow, CheckoutItemContainer, ImageContainer, Quantity, RemoveButton, BaseSpan, Value } from './checkout-item.styles';
 
 

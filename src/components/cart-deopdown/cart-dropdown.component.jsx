@@ -4,7 +4,7 @@ import Button, { BUTTON_TYPE_CLASSES } from '../Button/button.component'
 import CartItem from '../cart-item/cart-item.component'
 import {useSelector} from 'react-redux'
 import { CartDropdownContainer, CartItems, EmptyMessage } from './cart-dropdown.styles'
-import { selectCartItems } from '../../store/cartSelector'
+import { selectCartItems } from '../../store/selector/cartSelector'
 
 
 function CartDropDown() {

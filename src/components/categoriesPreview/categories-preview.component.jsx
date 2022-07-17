@@ -3,7 +3,7 @@ import ProductCard from '../product/product.component';
 import {useSelector} from 'react-redux'
 import './category-preview.styles.jsx'
 import { CategoryPreviewContainer, Preview, TitleLink } from './category-preview.styles.jsx';
-import { categoriesIsLoading, selectCategoryMap } from '../../store/categorySelector';
+import { categoriesIsLoading, selectCategoryMap } from '../../store/selector/categorySelector';
 import Spinner from '../spinner/spinner.component';
 
 function CategoryList() {
